@@ -38,7 +38,7 @@ class Signup extends Component {
   SignupSubmit(e) {
     e.preventDefault()
     const user = { email: this.state.email, username: this.state.username, password: this.state.password, profile: this.state.profile, imageUrl: this.state.url }
-    axios.post('http://localhost:4040/signup', user).then(this.props.AuthCheck(user))
+    axios.post('/signup', user).then(this.props.AuthCheck(user))
   }
 
   render() {

@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 require('../models/Accounts');
 
-mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/news');
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://heroku_sjg8kqmm:33jkdaujb2vpo5sukgp4jf54dg@ds125048.mlab.com:25048/heroku_sjg8kqmm');
 
 let Account = mongoose.model('Account');
 
@@ -34,6 +34,7 @@ app.get('/accounts', (req, res) => { //route for getting all accounts
 
 //Signing in
 app.post('/login', (req, res) => {
+  console.log(req.body)
   Account.findOne({email: req.body.email}).then(doc => doc.toObject()).then(a => {res.json(a)}).catch(console.error)
 });
 

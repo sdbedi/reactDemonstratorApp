@@ -29,7 +29,7 @@ class Profile extends Component {
     e.preventDefault()
     const newAccount = {username: this.state.username, profile: this.state.profile, email: this.props.email}
     console.log(newAccount);
-    axios.post('http://localhost:4040/account', newAccount).then(this.setState({ formOpen: !this.state.formOpen }));
+    axios.post('/account', newAccount).then(this.setState({ formOpen: !this.state.formOpen }));
   }
 
   render() {

@@ -4,7 +4,7 @@ import axios from 'axios'
 class Login extends Component {
   constructor(props) {
     super(props)
-
+    console.log("props: ", props);
     this.state = { email: '', password: '' }
     this.EmailChange = this.EmailChange.bind(this)
     this.PasswordChange = this.PasswordChange.bind(this)
@@ -13,6 +13,7 @@ class Login extends Component {
 
   EmailChange(e) {
     this.setState({ email: e.target.value })
+    console.log("e target val: ", e.target.value)
   }
 
   PasswordChange(e) {
@@ -21,9 +22,10 @@ class Login extends Component {
 
   // submits login data to db, db currently only checks email - need to implement password checking
   LoginSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+    console.log("email in loginsubmit: ", this.state.email)
     const user = { email: this.state.email, password: this.state.password }
-    axios.post('http://localhost:4040/login', user).then(user => this.props.AuthCheck(user.data))
+    axios.post('/login', user).then(user => this.props.AuthCheck(user.data))
   }
 
   render() {

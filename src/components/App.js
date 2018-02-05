@@ -16,11 +16,12 @@ class App extends Component {
   // get all user accounts on mount
   componentDidMount() {
     const { email, profile, username, imageUrl } = this.props
-    axios.get('http://localhost:4040/accounts').then(res => this.setState({ profiles: res.data }))
+    axios.get('/accounts').then(res => this.setState({ profiles: res.data }))
   }
 
   // check is user is signed in; establish initial app state
   AuthCheck({ email, username, profile, imageUrl }) {
+  console.log("email: ", email);
     this.setState({ authenticated: true,  currentProfile: [{email: email, username: username, profile: profile, imageUrl: imageUrl}]})
   }
 
